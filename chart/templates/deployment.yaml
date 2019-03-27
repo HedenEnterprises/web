@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ include "heden-enterprises-web.deployment-name" . }}
+  labels:
+    name:  {{ include "heden-enterprises-web.deployment-name" . }}
+    helm.sh/chart: {{ include "heden-enterprises-web.chart" . }}
+    app.kubernetes.io/name: {{ include "heden-enterprises-web.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+spec:
+  replicas: {{ include "heden-enterprises-web.replicas" . }}
+  labels:
+    hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+  selector:
+    matchLabels:
+      hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+  template:
+    metadata:
+      labels:
+        hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+    spec:
+      containers:
+      - name: {{ include "heden-enterprises-web.name" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: Always

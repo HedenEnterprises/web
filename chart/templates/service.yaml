@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "heden-enterprises-web.service-name" . }}
+  labels:
+    helm.sh/chart: {{ include "heden-enterprises-web.chart" . }}
+    app.kubernetes.io/name: {{ include "heden-enterprises-web.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+spec:
+  selector:
+    hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+  ports:
+  - nodePort:
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  type: NodePort

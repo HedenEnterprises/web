@@ -1,0 +1,10 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ include "heden-enterprises-web.ingress-name" . }}
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: {{ include "heden-enterprises-web.externalIPName" . }}
+spec:
+  backend:
+    serviceName: {{ include "heden-enterprises-web.service-name" . }}
+    servicePort: 80
