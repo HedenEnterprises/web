@@ -7,10 +7,6 @@ steps:
   name: "gcr.io/cloud-builders/docker"
   args: [ "push" , "gcr.io/heden-enterprises/he-nginx" ]
 
-- id: hash
-  name: "ubuntu"
-  args: [ "bash" , "-c" , "docker inspect --format='{{index .RepoDigests 0}}' gcr.io/heden-enterprises/he-nginx > _hash" ]
-
 - id: deploy
   name: "gcr.io/cloud-builders/gcloud"
   args:
@@ -19,6 +15,7 @@ steps:
     gcloud components install kubectl
     gsutil cp gs://heden-enterprises/kubeconfig .
     export KUBECONFIG=kubeconfig
+    gcloud docker -- inspect --format='{{index .RepoDigests 0}}' gcr.io/heden-enterprises/he-nginx > _hash
     kubectl set image deployment/heden-enterprises-web he-nginx=$(cat _hash | tr -d "[::space::]")
 
 # PROJECT_ID="heden-enterprises"
