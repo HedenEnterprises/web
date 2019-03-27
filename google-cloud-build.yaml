@@ -7,6 +7,10 @@ steps:
   name: "gcr.io/cloud-builders/docker"
   args: [ "push" , "gcr.io/heden-enterprises/he-nginx" ]
 
+- id: hash
+  name: "gcr.io/cloud-builders/docker"
+  args: [ "inspect" , "--format='{{index .RepoDigests 0}}'" , "gcr.io/heden-enterprises/he-nginx > _hash" ]
+
 - id: deploy
   name: "gcr.io/cloud-builders/gcloud"
   entrypoint: "bash"
@@ -16,9 +20,8 @@ steps:
     gcloud components install kubectl
     gsutil cp gs://heden-enterprises/kubeconfig .
     export KUBECONFIG=kubeconfig
-    gcloud docker -- inspect --format='{{index .RepoDigests 0}}' gcr.io/heden-enterprises/he-nginx > _hash
     kubectl set image deployment/heden-enterprises-web he-nginx=$(cat _hash | tr -d "[::space::]")
- 
+
 # PROJECT_ID="heden-enterprises"
 # PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='get(projectNumber)')"
 # gcloud projects add-iam-policy-binding $PROJECT_NUMBER --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com --role=roles/container.developer
