@@ -14,9 +14,6 @@ steps:
   - "-c"
   - |
     gcloud components install kubectl
-    gsutil cp gs://heden-enterprises/kubeconfig .
-    sed -i 's|/home/bryan|/workspace|' kubeconfig
-    export KUBECONFIG=kubeconfig
     kubectl get replicasets/heden-enterprises-web | tail -1 | awk '{print $1}' > replicasets
     kubectl set image deployment/heden-enterprises-web heden-enterprises-web=gcr.io/heden-enterprises/he-nginx:latest
     kubectl delete replicasets/$(cat replicasets | tr -d "[:space:]")
