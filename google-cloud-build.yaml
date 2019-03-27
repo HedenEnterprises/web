@@ -7,10 +7,6 @@ steps:
   name: "gcr.io/cloud-builders/docker"
   args: [ "push" , "gcr.io/heden-enterprises/he-nginx" ]
 
-- id: hash
-  name: "gcr.io/cloud-builders/docker"
-  args: [ "inspect" , "--format" , "'{{index .RepoDigests 0}}'" , "gcr.io/heden-enterprises/he-nginx" , ">" , "_hash" ]
-
 - id: deploy
   name: "gcr.io/cloud-builders/gcloud"
   entrypoint: "bash"
@@ -20,7 +16,10 @@ steps:
     gcloud components install kubectl
     gsutil cp gs://heden-enterprises/kubeconfig .
     export KUBECONFIG=kubeconfig
-    kubectl set image deployment/heden-enterprises-web he-nginx=$(cat _hash | tr -d "[::space::]")
+    REPLICASET=$(kubectl get replicasets/heden-enterprises-web | tail -1 | awk '{print $1}')
+    kubectl set image deployment/heden-enterprises-web heden-enterprises-web=gcr.io/heden-enterprises/he-nginx:latest
+    kubectl delete replicasets/$REPLICASET
+
 
 # PROJECT_ID="heden-enterprises"
 # PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='get(projectNumber)')"
