@@ -11,7 +11,6 @@ RUN \
     apt-get install -y php-cli && \
     files=$(find . -type f -name "*.html" -o -name "*.php" -path assets -prune) && \
     for file in $files; do \
-        php build.php --header=header.php --footer=footer.php --content=$file; \
         php build.php --header=header.php --footer=footer.php --content=$file > $file.tmp; \
         mv $file.tmp $file; \
     done && \

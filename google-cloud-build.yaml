@@ -9,7 +9,7 @@ steps:
 
 - id: hash
   name: "gcr.io/cloud-builders/docker"
-  args: [ "inspect" , "--format='{{index .RepoDigests 0}}'" , "gcr.io/heden-enterprises/he-nginx > _hash" ]
+  args: [ "inspect" , "--format" , "'{{index .RepoDigests 0}}'" , "gcr.io/heden-enterprises/he-nginx" , ">" , "_hash" ]
 
 - id: deploy
   name: "gcr.io/cloud-builders/gcloud"
