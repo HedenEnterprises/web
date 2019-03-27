@@ -1,5 +1,7 @@
 <?php
 
+build();
+
 
 function print_help()
 {
@@ -23,7 +25,7 @@ function build()
 
     $opts = getopt("", array("help", "header:", "content:", "footer:"));
 
-    if (!empty($opts["help"])) {
+    if (isset($opts["help"])) {
         print_help();
     }
 
