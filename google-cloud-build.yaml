@@ -15,7 +15,7 @@ steps:
   - |
     gcloud components install kubectl
     gs://heden-enterprises/cloud-builder-service-account.json
-    gcloud auth activate-service-accont --key-file cloud-builder-service-account.json
+    gcloud auth activate-service-account --key-file cloud-builder-service-account.json
     kubectl get replicasets/heden-enterprises-web | tail -1 | awk '{print $1}' > replicasets
     kubectl set image deployment/heden-enterprises-web heden-enterprises-web=gcr.io/heden-enterprises/he-nginx:latest
     kubectl delete replicasets/$(cat replicasets | tr -d "[:space:]")
