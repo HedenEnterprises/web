@@ -14,14 +14,11 @@ steps:
   - "-c"
   - |
     gcloud components install kubectl
-    gsutil cp gs://heden-enterprises/cloud-builder-service-account.json .
-    #gcloud auth activate-service-account --key-file cloud-builder-service-account.json
     gcloud config set project heden-enterprises
     gcloud container clusters get-credentials web-cluster --zone us-central1-a
     kubectl get replicasets -l hedenenterprises.io/app=heden-enterprises-web | tail -1 | awk '{print $1}' > replicasets
     kubectl set image deployment/heden-enterprises-web heden-enterprises-web=gcr.io/heden-enterprises/he-nginx:latest
     kubectl delete replicasets/$(cat replicasets | tr -d "[:space:]")
-
 
 # PROJECT_ID="heden-enterprises"
 # PROJECT_NUMBER="$(gcloud projects describe $PROJECT_ID --format='get(projectNumber)')"

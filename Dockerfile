@@ -18,6 +18,5 @@ RUN \
     rm /usr/share/nginx/html/header.php && \
     rm /usr/share/nginx/html/footer.php && \
     apt-get remove --purge -y php-cli && \
-    apt-get autoremove -y && \
-    echo "hello there" > /usr/share/nginx/html/index.html
+    apt-get autoremove -y &&
 
