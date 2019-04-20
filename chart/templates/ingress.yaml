@@ -5,6 +5,24 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: {{ include "heden-enterprises-web.externalIPName" . }}
 spec:
-  backend:
-    serviceName: {{ include "heden-enterprises-web.service-name" . }}
-    servicePort: 80
+  tls:
+  - hosts:
+    - hedenenterprises.io
+    secretName: tls-cert
+  rules:
+    - host: hedenenterprises.io
+      http:
+        port: 443
+        paths:
+        - path: /.*
+          backend:
+            serviceName: {{ include "heden-enterprises-web.service-name" . }}
+            servicePort: 80
+    - host: hedenenterprises.io
+      http:
+        port: 80
+        paths:
+        - path: /.*
+          backend:
+            serviceName: {{ include "heden-enterprises-web.service-name" . }}
+            servicePort: 80

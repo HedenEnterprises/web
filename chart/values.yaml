@@ -1,7 +1,7 @@
 
 image:
   repository: gcr.io/heden-enterprises/he-nginx
-  tag: 0.0.1
+  tag: latest
 
 
 # how many pods for the deployment?

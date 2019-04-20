@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-cert-manager
+
+---
+
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: test-selfsigned
+  namespace: test-cert-manager
+spec:
+  selfSigned: {}
+
+---
+
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: selfsigned-cert
+  namespace: test-cert-manager
+spec:
+  commonName: wtf.com
+  secretName: selfsigned-cert-tls
+  issuerRef:
+    name: test-selfsigned
