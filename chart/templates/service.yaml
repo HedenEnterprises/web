@@ -11,6 +11,7 @@ metadata:
 spec:
   selector:
     hedenenterprises.io/app: {{ include "heden-enterprises-web.name" . }}
+  loadBalancerIp: 130.211.19.206
   ports:
   - nodePort:
     port: 80
