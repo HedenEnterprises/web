@@ -329,3 +329,51 @@ main.privacy p.notice {
     margin-bottom: 1em;
     display: none;
 }
+
+@media screen and (max-width: 1224px) {
+    h1 {
+        font-size: 1.8em !important;
+    }
+    h1 span {
+        display: block;
+        height: 1px;
+        width: 1px;
+    }
+
+
+    .section-title span {
+        width: 80%;
+    }
+    .services .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+.services .service {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 2em;
+    margin-bottom: 3em;
+    position: relative;
+}
+}
+
+/* tablet portrait */
+@media screen and (min-device-width: 768px) and (max-device-width: 1224px) and (orientation: portrait) {
+
+}
+/* tablet landscape */
+@media screen and (min-device-width: 768px) and (max-device-width: 1224px) and (orientation: landscape) {
+    /* no need to do anything here */
+}
+/* smartphone portrait */
+@media screen and (max-width: 320px) {
+
+}
+/* smartphone landscape */
+@media screen and (min-width: 321px) {
+
+}
