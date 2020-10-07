@@ -3,6 +3,16 @@
 $page_title = "Heden Enterprises";
 $meta_description = "Heden Enterprises is your technology consultant in the twin cities";
 
+$banner_html = '
+        <section class="above-the-fold">
+            <div class="container">
+                <h1>Anticipate. Adapt.</h1>
+                <h1>Accelerate.</h1>
+                <a href="/#contact" class="button">Get Started</a>
+            </div>
+        </section>
+';
+
 require("template/header.php");
 ?>
 
@@ -152,18 +162,12 @@ require("template/header.php");
         document.getElementById("contact-me").onclick = function()
         {
             var xhttp = new XMLHttpRequest();
-
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var details = document.getElementById("project-details").value;
-
-            var query = "name=" + name + "&email=" + email + "&details=" + details;
-
-            xhttp.open("POST", "assets/mail.php", true);
+            xhttp.open("POST", "assets/mail", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send(query);
+            xhttp.send("name=" + val("name") + "&email=" + val("email") + "&details=" + val("project-details"));
 
-            document.getElementById("thank-you").style.display = "inline-block";
+            el("thank-you").style.display = "inline-block";
+            setTimeout(function() { el("thank-you").style.display = "none"; }, 5000);
         };
     </script>
 

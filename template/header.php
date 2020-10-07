@@ -30,10 +30,10 @@ if (count($error_msgs) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="description" content="<?php echo $meta_description; ?>" />
 
-    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
     <link async rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900" />
-    <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/all.css" />
-    <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/v4-shims.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/v4-shims.css" />
 
     <title><?php echo $page_title; ?></title>
 
@@ -46,6 +46,18 @@ if (count($error_msgs) > 0) {
         gtag('config', '<?php echo $google_analytics_tracking_id; ?>');
     </script>
 <?php } ?>
+
+    <script>
+        function el(id)
+        {
+            return document.getElementById(id) || false;
+        }
+
+        function val(id)
+        {
+            return el(id).value || "";
+        }
+    </script>
 
 </head>
 
@@ -68,7 +80,7 @@ if (count($error_msgs) > 0) {
                                 <li><a href="/services#network-monitoring">Network Monitoring</a></li>
                                 <li><a href="/services#security">Security</a></li>
                                 <li><a href="/services#managed-services">Managed Services</a></li>
-                                <li><a href="/services#automation">Automation</a></li>
+                                <li><a href="/services#devops">DevOps</a></li>
                                 <li><a href="/services#training">Training</a></li>
                             </ul>
                         </li>
@@ -85,17 +97,10 @@ if (count($error_msgs) > 0) {
             </nav>
         </div>
 
-<?php if (empty($include_main_banner) || $include_main_banner == true) { ?>
-        <section class="above-the-fold">
-            <div class="container">
-                <h1>Anticipate. Adapt.</h1>
-                <h1>Accelerate.</h1>
-                <a href="/#contact" class="button">Get Started</a>
-            </div>
-        </section>
 <?php
-} else { /* include_main_banner */
-    echo $banner_html;
-}
+    if (!empty($banner_html)) {
+        echo $banner_html;
+    }
 ?>
+
     </header>
