@@ -20,24 +20,28 @@ fi
 ts=$(date +%s)
 dir="/home/${user}/web_deployment_${env}_${ts}"
 
-ssh $host "mkdir ${dir}"
+ssh $user@$host "mkdir ${dir}"
 
 # only copy php files from root dir over
 pwd_files=$(find .  -maxdepth 1 -name "*.php")
 
 for file in $pwd_files; do
-    scp $file $host:$dir
+    scp $file $user@$host:$dir
 done
 
 pwd_dirs=$(find . -maxdepth 1 -type d -not -path ./.git -not -path .)
 
 for pwd_dir in $pwd_dirs; do
-    scp -r $pwd_dir $host:$dir
+    scp -r $pwd_dir $user@$host:$dir
 done
 
-ssh $host "sudo rm -r /var/www/${prefix}${basename}/html/*"
-ssh $host "sudo cp -r ${dir}/* /var/www/${prefix}${basename}/html/"
-ssh $host "sudo touch /var/www/${prefix}${basename}/html/assets/sensitive.php"
-ssh $host "rm -r ${dir}"
+htmldir="/var/www/${prefix}${basename}/html"
+
+ssh $user@$host "if [ -f ${htmldir}/assets/sensitive.php ]; then sudo chattr +i ${htmldir}/assets/sensitive.php; fi"
+ssh $user@$host "sudo rm -r ${htmldir}/*"
+ssh $user@$host "sudo cp -r ${dir}/* ${htmldir}/"
+ssh $user@$host "sudo touch ${htmldir}/assets/sensitive.php"
+ssh $user@$host "sudo chattr -i ${htmldir}/assets/sensitive.php"
+ssh $user@$host "rm -r ${dir}"
 
 echo "Deployment to /var/www/${prefix}${basename}/html complete"
