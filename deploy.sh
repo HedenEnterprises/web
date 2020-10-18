@@ -44,4 +44,10 @@ ssh $user@$host "sudo touch ${htmldir}/assets/sensitive.php"
 ssh $user@$host "sudo chattr -i ${htmldir}/assets/sensitive.php"
 ssh $user@$host "rm -r ${dir}"
 
+./create-htaccess.sh
+scp .htaccess "$user@$host:/home/${user}/htaccess_${env}_${ts}"
+ssh $user@$host "sudo cp /etc/apache2/conf-available/heden-enterprises-hide-php-ext.conf /etc/apache2/conf-available/heden-enterprises-hide-php-ext.conf.bak_${ts}"
+ssh $user@$host "sudo cp /home/${user}/htaccess_${env}_${ts} /etc/apache2/conf-available/heden-enterprises-hide-php-ext.conf"
+ssh $user@$host "rm /home/${user}/htaccess_${env}_${ts}"
+
 echo "Deployment to /var/www/${prefix}${basename}/html complete"
