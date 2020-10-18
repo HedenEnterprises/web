@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteRule /services.php /services.php.php [L]
+RewriteRule /company.php /company.php.php [L]
+RewriteRule /index.php /index.php.php [L]
+RewriteRule /privacy.php /privacy.php.php [L]
+RewriteRule /services/managed-services.php /services/managed-services.php.php [L]
+RewriteRule /services/network-monitoring.php /services/network-monitoring.php.php [L]
+RewriteRule /services/devops.php /services/devops.php.php [L]
+RewriteRule /services/security.php /services/security.php.php [L]
+RewriteRule /services/development.php /services/development.php.php [L]
+RewriteRule /services/training.php /services/training.php.php [L]
+RewriteRule /services/cloud-services.php /services/cloud-services.php.php [L]
+RewriteRule /services/data-science.php /services/data-science.php.php [L]
