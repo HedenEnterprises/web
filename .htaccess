@@ -1,10 +1,12 @@
+# /etc/apache2/conf-available/heden-enterprises-hide-php-ext.conf
+
 RewriteEngine On
-RewriteRule /services$ /services.php [L]
 RewriteRule /company$ /company.php [L]
 RewriteRule /index$ /index.php [L]
 RewriteRule /privacy$ /privacy.php [L]
 RewriteRule /services/managed-services$ /services/managed-services.php [L]
 RewriteRule /services/network-monitoring$ /services/network-monitoring.php [L]
+RewriteRule /services/index$ /services/index.php [L]
 RewriteRule /services/devops$ /services/devops.php [L]
 RewriteRule /services/security$ /services/security.php [L]
 RewriteRule /services/development$ /services/development.php [L]
