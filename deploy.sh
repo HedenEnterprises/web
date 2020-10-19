@@ -40,8 +40,8 @@ htmldir="/var/www/${prefix}${basename}/html"
 ssh $user@$host "if [ -f ${htmldir}/assets/sensitive.php ]; then sudo chattr +i ${htmldir}/assets/sensitive.php; fi"
 ssh $user@$host "sudo rm -r ${htmldir}/*"
 ssh $user@$host "sudo cp -r ${dir}/* ${htmldir}/"
-ssh $user@$host "sudo touch ${htmldir}/assets/sensitive.php"
 ssh $user@$host "sudo chattr -i ${htmldir}/assets/sensitive.php"
+ssh $user@$host "sudo touch ${htmldir}/assets/sensitive.php"
 ssh $user@$host "rm -r ${dir}"
 
 ./create-htaccess.sh
