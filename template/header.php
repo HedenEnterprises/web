@@ -30,6 +30,7 @@ if (count($error_msgs) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="description" content="<?php echo $meta_description; ?>" />
 
+    <link rel="shortcut icon" href="/assets/media/images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
     <link async rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900" />
     <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/all.css" />
