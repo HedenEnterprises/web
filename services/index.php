@@ -12,7 +12,7 @@ $banner_html = '
 ';
 */
 
-require("template/header.php");
+require("../template/header.php");
 ?>
 
     <main class="services">
@@ -73,4 +73,4 @@ require("template/header.php");
 
 <?php
 
-require("template/footer.php");
+require("../template/footer.php");
