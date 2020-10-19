@@ -4,7 +4,10 @@
 # then get rid of the php extension
 files=$(find . -name "*.php" | sed 's|^./||' | grep -v "^assets" | grep -v "^template" | sed 's|\.php$||')
 
-echo "RewriteEngine On" > .htaccess
+
+echo "# /etc/apache2/conf-available/heden-enterprises-hide-php-ext.conf" > .htaccess
+echo "" >> .htaccess
+echo "RewriteEngine On" >> .htaccess
 
 for file in $files; do
     echo "RewriteRule /${file}\$ /${file}.php [L]" >> .htaccess
