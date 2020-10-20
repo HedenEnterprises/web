@@ -20,9 +20,14 @@ if (count($error_msgs) > 0) {
     exit(0);
 }
 
+if (empty($banner_html)) {
+    $banner_html = "";
+}
+
 ?>
 
 <html lang="en-US">
+
 
 <head>
     <meta charset="UTF-8" />
@@ -36,72 +41,63 @@ if (count($error_msgs) > 0) {
     <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/all.css" />
     <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/v4-shims.css" />
 
+    <script src="/assets/main.js"></script>
+
     <title><?php echo $page_title; ?></title>
 
 <?php if (!empty($google_analytics_tracking_id)) { ?>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $google_analytics_tracking_id; ?>"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', '<?php echo $google_analytics_tracking_id; ?>');
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '<?php echo $google_analytics_tracking_id; ?>');
+
     </script>
 <?php } ?>
 
-    <script>
-        function el(id)
-        {
-            return document.getElementById(id) || false;
-        }
-
-        function val(id)
-        {
-            return el(id).value || "";
-        }
-    </script>
-
 </head>
+
 
 <body>
 
-    <header class="header" role="header">
-        <div class="container">
-            <nav class="nav" role="navigation">
-                <div class="logo">
-                    <a href="https://heden.enterprises/">Heden Enterprises</a>
-                </div>
-                <div class="nav-items">
-                    <ul>
-                        <li>
-                            <a href="/services">Services</a>
-                            <ul>
-                                <li><a href="/services#development">Development</a></li>
-                                <li><a href="/services#data-science">Data Science</a></li>
-                                <li><a href="/services#cloud-services">Cloud Services</a></li>
-                                <li><a href="/services#network-monitoring">Network Monitoring</a></li>
-                                <li><a href="/services#security">Security</a></li>
-                                <li><a href="/services#managed-services">Managed Services</a></li>
-                                <li><a href="/services#devops">DevOps</a></li>
-                                <li><a href="/services#training">Training</a></li>
-                            </ul>
-                        </li>
-                    <!--
-                        <li>
-                            <a href="https://blog.hedenenterprises.io/">Blog</a>
-                        </li>
-                    -->
-                        <li>
-                            <a href="/#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
 
-<?php
-    if (!empty($banner_html)) {
-        echo $banner_html;
-    }
-?>
+<header class="header" role="header">
+    <div class="container">
+        <nav class="nav" role="navigation">
+            <div class="logo">
+                <a href="https://heden.enterprises/">Heden Enterprises</a>
+            </div>
+            <div class="nav-items">
+                <ul>
+                    <li>
+                        <a href="/services">Services</a>
+                        <ul>
+                            <li><a href="/services#development">Development</a></li>
+                            <li><a href="/services#data-science">Data Science</a></li>
+                            <li><a href="/services#cloud-services">Cloud Services</a></li>
+                            <li><a href="/services#network-monitoring">Network Monitoring</a></li>
+                            <li><a href="/services#security">Security</a></li>
+                            <li><a href="/services#managed-services">Managed Services</a></li>
+                            <li><a href="/services#devops">DevOps</a></li>
+                            <li><a href="/services#training">Training</a></li>
+                        </ul>
+                    </li>
+                <!--
+                    <li>
+                        <a href="https://blog.hedenenterprises.io/">Blog</a>
+                    </li>
+                -->
+                    <li>
+                        <a href="/#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-    </header>
+<?php echo $banner_html; ?>
+
+</header>
+
