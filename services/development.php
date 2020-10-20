@@ -67,8 +67,8 @@ require("../template/header.php");
             <li>Complete Custom software development </li>
             <li>Software updating</li>
             <li>Integration with existing tools in use (ERP, CRM, etc.)</li>
-            <li>API Development for smooth automation and easy integration with internal and external systems</li>l
-            <li>Technical Support</li>l
+            <li>API Development for smooth automation and easy integration with internal and external systems</li>
+            <li>Technical Support</li>
         </ul>
 
     </div>
