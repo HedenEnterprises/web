@@ -4,6 +4,8 @@
 
 This is the most basic of a templating system.
 
+[![Build Status](https://travis-ci.org/HedenEnterprises/web.svg?branch=main)](https://travis-ci.org/HedenEnterprises/web)
+
 ## How do I?
 
 You *really* want to use this? Go for it.
