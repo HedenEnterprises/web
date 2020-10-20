@@ -122,8 +122,7 @@ require("template/header.php");
         </div>
     </section>
 
-    <a name="contact"></a>
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="container">
 
             <div class="bubble shadow">

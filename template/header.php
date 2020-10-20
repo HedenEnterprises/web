@@ -31,13 +31,12 @@ if (empty($banner_html)) {
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="description" content="<?php echo $meta_description; ?>" />
 
     <link rel="shortcut icon" href="/assets/media/images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-    <link async rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900" />
     <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/all.css" />
     <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/v4-shims.css" />
 
@@ -63,9 +62,9 @@ if (empty($banner_html)) {
 <body>
 
 
-<header class="header" role="header">
+<header class="header">
     <div class="container">
-        <nav class="nav" role="navigation">
+        <nav class="nav">
             <div class="logo">
                 <a href="https://heden.enterprises/">Heden Enterprises</a>
             </div>
