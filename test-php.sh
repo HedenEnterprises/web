@@ -20,4 +20,4 @@ for dir in $dirs; do
     popd
 done
 
-echo $rc
+exit $rc
