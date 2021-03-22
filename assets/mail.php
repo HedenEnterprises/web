@@ -56,7 +56,7 @@ function handle_request()
     }
 
     $subject = "Contact from $name : " . date("r");
-    $body    = date("r") . "\r\n\r\n" . $details;
+    $body    = date("r") . "\r\nFrom: $name\r\nEmail: $email\r\n\r\n" . $details;
 
     $mail = new PHPMailer();
 
