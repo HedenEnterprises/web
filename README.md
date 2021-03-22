@@ -18,13 +18,17 @@ All you need to do is clone the repository, and then create a file `sensitive.ph
 // this is optional
 $google_analytics_tracking_id = "UA-XXXXXXXXX-X";
 
-// who is authenticating against gmail
-$gmail_user = "";
-$gmail_password = "";
-
 // who is receiving the message
-$mail_recipient = "";
+$mail_recipient      = "";
 $mail_recipient_name = "";
+
+// settings from aws ses (go through domain validation and then add $mail_recipient as a verified email recipient)
+$aws_smtp_user_name = ""; // these credentials will be shown when setting up smtp credentials
+$aws_smtp_password  = "";
+
+$aws_smtp_server  = "email-smtp.us-east-2.amazonaws.com"; // check your settings for proper hostname
+$aws_smtp_port    = 587;
+$aws_smtp_use_tls = true;
 
 ?>
 ```
